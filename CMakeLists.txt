@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
-project(cmake_and_cuda LANGUAGES CXX CUDA)
+project(cuda2cpp LANGUAGES CXX CUDA)
 project(cuda_base CXX CUDA)
 
 include(CTest)
@@ -28,10 +28,10 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_50,code=sm_50")
 
 if(BUILD_TESTING)
 
-  add_executable(cmake_and_cuda main.cpp)
+  add_executable(cuda2cpp main.cpp)
 
-  set_target_properties(cmake_and_cuda PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-  target_link_libraries(cmake_and_cuda PRIVATE cuda_base)
+  set_target_properties(cuda2cpp PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+  target_link_libraries(cuda2cpp PRIVATE cuda_base)
 
   #add_test(NAME particles_10k COMMAND particle_test 10000 )
   #add_test(NAME particles_256k COMMAND particle_test 256000 )

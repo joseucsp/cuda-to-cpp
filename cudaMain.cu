@@ -1,6 +1,5 @@
 #include "cudaMain.h"
 #include "func.h"
-using namespace std;
 
 int cudaMain(int argc, char **argv) {  
     int *A = new int[5];
