@@ -12,12 +12,12 @@ add_library(cuda_base
     func.h
   )
 
-# Request that particles be built with -std=c++11
-# As this is a public compile feature anything that links to particles
+# Request that cuda_base be built with -std=c++11
+# As this is a public compile feature anything that links to cuda_base
 # will also build with -std=c++11
 target_compile_features(cuda_base PUBLIC cxx_std_11)
 
-# We need to explicitly state that we need all CUDA files in the particle
+# We need to explicitly state that we need all CUDA files in the cuda_base
 # library to be built with -dc as the member functions could be called by
 # other libraries and executables
 set_target_properties( cuda_base
@@ -32,9 +32,6 @@ if(BUILD_TESTING)
 
   set_target_properties(cuda2cpp PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
   target_link_libraries(cuda2cpp PRIVATE cuda_base)
-
-  #add_test(NAME particles_10k COMMAND particle_test 10000 )
-  #add_test(NAME particles_256k COMMAND particle_test 256000 )
 
   if(APPLE)
     # We need to add the default path to the driver (libcuda.dylib) as an rpath,
